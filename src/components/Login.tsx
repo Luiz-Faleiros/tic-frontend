@@ -22,11 +22,13 @@ export default function Login(){
             password: password
         }
 
-        let status = await onLogin(loginCredentials)
-        if (status === HttpStatusCode.Ok) {
-            navigate('/home')
-        } else {
-            alert('Usuário / senha incorretos')
+        try {
+            let status = await onLogin(loginCredentials);
+            if (status === HttpStatusCode.Ok) {
+              navigate('/dashboard/patrimonio');
+            }
+        } catch (error) {
+            alert('Usuário / senha incorretos');
         }
     }
     

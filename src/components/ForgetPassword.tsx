@@ -24,10 +24,12 @@ export default function ForgetPassword(){
             password: password
         }
 
-        let status = await changePassword(loginCredentials)
-        if (status === HttpStatusCode.Ok) {
-            navigate('/')
-        } else {
+        try {
+            let status = await changePassword(loginCredentials)
+            if (status === HttpStatusCode.Ok) {
+                navigate('/')
+            }   
+        } catch {
             alert('Usuário / senha incorretos')
         }
     }

@@ -1,6 +1,5 @@
-import { HttpStatusCode } from "axios";
 import { apiTic } from "../api";
-import { LoginRequest } from "./type";
+import { CreateUser, ListUsers, LoginRequest } from "./type";
 
 const onLogin = async (data: LoginRequest): Promise<number> => {
     try {
@@ -8,7 +7,7 @@ const onLogin = async (data: LoginRequest): Promise<number> => {
       
       return response.status;
     } catch (err) {
-      return HttpStatusCode.Unauthorized
+      throw new Error('Error')
     }
 };
 
@@ -18,8 +17,29 @@ const changePassword = async (data: LoginRequest): Promise<number> => {
     
     return response.status;
   } catch (err) {
-    return HttpStatusCode.BadRequest
+    throw new Error('Error')
   }
 };
 
-export { onLogin, changePassword }
+const createUser = async (data: CreateUser): Promise<number> => {
+  try {
+    const response = await apiTic.post('/users', data);
+    
+    return response.status;
+  } catch (err) {
+    throw new Error('Error')
+  }
+};
+
+const listUsers = async (): Promise<ListUsers[]> => {
+  try {
+    const {data: response} = await apiTic.get<ListUsers[]>('/users');
+    
+    return response;
+  } catch (err) {
+
+    throw new Error('Error')
+  }
+}
+
+export { onLogin, changePassword, createUser, listUsers }
