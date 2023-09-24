@@ -12,4 +12,14 @@ const onLogin = async (data: LoginRequest): Promise<number> => {
     }
 };
 
-export { onLogin }
+const changePassword = async (data: LoginRequest): Promise<number> => {
+  try {
+    const response = await apiTic.post('/users/password', data);
+    
+    return response.status;
+  } catch (err) {
+    return HttpStatusCode.BadRequest
+  }
+};
+
+export { onLogin, changePassword }
