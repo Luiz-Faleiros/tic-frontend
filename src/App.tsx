@@ -1,20 +1,33 @@
-import React from 'react'
-import './styles/global.css'
-import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
-import './styles/global.css'
-import Login from './components/Login'
-import ForgetPassword from './components/ForgetPassword'
+import "./styles/global.css";
+import ForgetPassword from "./components/ForgetPassword";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { Dashboard } from "./components/Dashboard";
+import Login from "./components/Login";
 
 function App() {
   return (
     <Router>
-      <div className="flex">
-        <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/password" element={<ForgetPassword />} />
-        </Routes>
-      </div>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <div className="flex">
+              <Login />
+            </div>
+          }
+        />
+        <Route
+          path="/password"
+          element={
+            <div className="flex">
+              <ForgetPassword />
+            </div>
+          }
+        />
+
+        <Route path="/dashboard" element={<Dashboard />} />
+      </Routes>
     </Router>
-  )
+  );
 }
-export default App
+export default App;
