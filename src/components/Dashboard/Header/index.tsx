@@ -17,7 +17,7 @@ const Container = styled.header`
 export const Header = () => {
   return (
     <Container>
-      <img src="logo.png" />
+      <img src={require("./logo.png")} />
     </Container>
   );
 };

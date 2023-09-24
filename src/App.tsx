@@ -3,6 +3,7 @@ import ForgetPassword from "./components/ForgetPassword";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import { Dashboard } from "./components/Dashboard";
 import Login from "./components/Login";
+import { Patrimonio } from "./components/Patrimonio";
 
 function App() {
   return (
@@ -25,7 +26,14 @@ function App() {
           }
         />
 
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route
+          path="/dashboard/patrimonio"
+          element={
+            <Dashboard>
+              <Patrimonio />
+            </Dashboard>
+          }
+        />
       </Routes>
     </Router>
   );
