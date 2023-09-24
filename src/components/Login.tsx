@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { onLogin } from "../service/users/request"
 import { LoginRequest } from "../service/users/type"
-import { log } from "console"
+import { HttpStatusCode } from "axios"
 
 export default function Login(){
     const [email, setEmail] = useState('')
@@ -16,18 +16,18 @@ export default function Login(){
 
     const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        console.log(process.env.API_TIC);
-        
-        
+
         let loginCredentials: LoginRequest = {
             email: email,
             password: password
         }
 
-        console.log(loginCredentials);
-        
-
-        let response = onLogin(loginCredentials)
+        let status = await onLogin(loginCredentials)
+        if (status === HttpStatusCode.Ok) {
+            navigate('/home')
+        } else {
+            alert('Usuário / senha incorretos')
+        }
     }
     
     return (
