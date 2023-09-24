@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 const Container = styled.nav`
-    width: 150px;
-      height: 100%;
+  width: 150px;
+  height: 100%;
   background: #0c5dbd;
 
   position: fixed;
@@ -35,7 +35,6 @@ export const Sidebar = () => {
   return (
     <Container>
       <ul>
-        <li className="nobottomborder">Dashboard</li>
         <li className="nobottomborder">Patrimonio</li>
         <li className="nobottomborder">Cadastro</li>
         <li>Usuario</li>

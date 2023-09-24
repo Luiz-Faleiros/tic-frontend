@@ -3,7 +3,7 @@ import ForgetPassword from "./components/ForgetPassword";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import { Dashboard } from "./components/Dashboard";
 import Login from "./components/Login";
-import { Patrimonio } from "./components/Patrimonio";
+import { CreateUser } from "./components/CreateUser";
 
 function App() {
   return (
@@ -27,10 +27,10 @@ function App() {
         />
 
         <Route
-          path="/dashboard/patrimonio"
+          path="/dashboard/createuser"
           element={
             <Dashboard>
-              <Patrimonio />
+              <CreateUser />
             </Dashboard>
           }
         />

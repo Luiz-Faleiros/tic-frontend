@@ -19,7 +19,7 @@ export const Dashboard = ({ children }: any) => {
         <Sidebar />
       </div>
 
-      <div style={{ marginLeft: "150px" }}>{children}</div>
+      <div style={{ height: "100%", marginLeft: "150px" }}>{children}</div>
     </Container>
   );
 };

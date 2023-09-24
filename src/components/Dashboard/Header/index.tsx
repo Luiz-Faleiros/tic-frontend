@@ -6,6 +6,7 @@ const Container = styled.header`
 
   width: 100%;
   height: 110px;
+  position: fixed;
 
   img {
     width: 200px;
