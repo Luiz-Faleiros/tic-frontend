@@ -3,7 +3,7 @@ import ForgetPassword from "./components/ForgetPassword";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import { Dashboard } from "./components/Dashboard";
 import Login from "./components/Login";
-import { CreateUser } from "./components/CreateUser";
+import { CreateUserPage } from "./components/CreateUser";
 
 function App() {
   return (
@@ -30,7 +30,7 @@ function App() {
           path="/dashboard/createuser"
           element={
             <Dashboard>
-              <CreateUser />
+              <CreateUserPage />
             </Dashboard>
           }
         />

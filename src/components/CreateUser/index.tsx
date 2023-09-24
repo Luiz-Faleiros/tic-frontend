@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { InputComponent } from "../Input";
 import styled from "styled-components";
+import { createUser } from "../../service/users/request";
+import { CreateUser } from "../../service/users/type";
 
 const Container = styled.div`
   display: flex;
@@ -36,10 +38,24 @@ const Container = styled.div`
   }
 `;
 
-export const CreateUser = () => {
+export const CreateUserPage = () => {
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const onSubmit = async () => {
+    try {
+      const data: CreateUser = {
+        email,
+        name: userName,
+        password,
+      };
+
+      await createUser(data);
+    } catch (error) {
+      alert("Erro ao criar um usuario")
+    }
+  };
 
   return (
     <Container>
@@ -71,7 +87,7 @@ export const CreateUser = () => {
         </div>
 
         <div className="submit-button">
-          <button>Criar Usuario</button>
+          <button onClick={onSubmit}>Criar Usuario</button>
         </div>
       </div>
     </Container>
