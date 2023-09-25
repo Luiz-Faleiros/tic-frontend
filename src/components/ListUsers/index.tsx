@@ -160,7 +160,7 @@ export const ListUsersPage = () => {
                     users?.length === i + 1 ? "is-last" : ""
                   }`}
                 >
-                  <img src="/eye.png" alt="visualizar" />
+                  <img src="/trash.png" alt="deletar" />
                   <img src="/edit.png" alt="editar" />
                 </td>
               </tr>
