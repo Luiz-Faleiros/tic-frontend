@@ -3,6 +3,7 @@ import { ListUsers, DeleteUser } from "../../service/users/type";
 import { useEffect, useState } from "react";
 import { deleteUser, listUsers } from "../../service/users/request";
 import { InputComponent } from "../Input";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   display: flex;
@@ -82,13 +83,19 @@ const Container = styled.div`
     justify-content: flex-start;
     gap: 0.5rem;
     margin-bottom: 1rem;
+  }
 
-    button {
-      border-radius: 5px;
-      background: #0c5dbd;
-      color: #fff;
-      padding: 0.3rem 1rem;
-    }
+  button {
+    border-radius: 5px;
+    background: #0c5dbd;
+    color: #fff;
+    padding: 0.3rem 1rem;
+  }
+
+  .flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 `;
 
@@ -135,16 +142,22 @@ export const ListUsersPage = () => {
   return (
     <Container>
       <div className="container-box">
-        <div className="filter">
-          <InputComponent
-            placeholder="Pesquisar"
-            onChange={setSearch}
-            value={search}
-            name="search"
-          />
+        <div className="flex">
+          <div className="filter">
+            <InputComponent
+              placeholder="Pesquisar"
+              onChange={setSearch}
+              value={search}
+              name="search"
+            />
 
-          <button onClick={onFilter}>Filtrar</button>
+            <button onClick={onFilter}>Filtrar</button>
+          </div>
+          <button>
+            <Link to="/dashboard/createuser">Cadastrar</Link>
+          </button>
         </div>
+
         <table>
           <thead>
             <tr>
