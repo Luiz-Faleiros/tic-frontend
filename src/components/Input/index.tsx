@@ -8,6 +8,7 @@ type Props = {
   name: string;
   onChange(value: string): void;
   value: any;
+  placeholder?: string;
 };
 
 const Container = styled.div`
@@ -24,10 +25,12 @@ const Container = styled.div`
   }
 
   input {
-    border-radius: 10px;
-    border: 3px solid #000;
+    border-radius: 5px;
+    padding: 15px;
+    border: 2px solid #000;
     background: #fff;
     height: 40px;
+    outline: none;
   }
 `;
 
@@ -42,7 +45,12 @@ export const InputComponent = ({
   return (
     <Container>
       <label htmlFor={props.name}>{labelText}</label>
-      <input value={value} onChange={({target}) =>  onChange(target?.value)} type={type as any} {...props} />
+      <input
+        value={value}
+        onChange={({ target }) => onChange(target?.value)}
+        type={type as any}
+        {...props}
+      />
       {errorMessage && <div className="error-message">{errorMessage}</div>}
     </Container>
   );
