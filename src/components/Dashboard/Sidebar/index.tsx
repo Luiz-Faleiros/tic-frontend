@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router";
 import styled from "styled-components";
 
 const Container = styled.nav`
@@ -32,12 +33,22 @@ const Container = styled.nav`
 `;
 
 export const Sidebar = () => {
+  const navigate = useNavigate()
+
+  const handleNavigation = (path: string) => {
+    navigate(path)
+  };
+
   return (
     <Container>
       <ul>
-        <li className="nobottomborder">Patrimonio</li>
-        <li className="nobottomborder">Cadastro</li>
-        <li>Usuario</li>
+        <li className="nobottomborder" onClick={() => handleNavigation('/dashboard/listproduct')}>
+          Patrimonio
+        </li>
+        <li className="nobottomborder" onClick={() => handleNavigation('/dashboard/createproduct')}>
+          Cadastro
+        </li>
+        <li onClick={() => handleNavigation('/dashboard/listusers')}>Usuario</li>
       </ul>
     </Container>
   );

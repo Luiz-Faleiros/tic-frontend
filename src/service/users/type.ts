@@ -7,7 +7,7 @@ export interface CreateUser {
     name: string,
     email: string,
     password: string,
-    is_adm?: string,
+    is_adm?: boolean,
 }
 
 export interface ListUsers {

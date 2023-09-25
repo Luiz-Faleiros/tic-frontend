@@ -13,6 +13,7 @@ const Container = styled.div`
 
   .container-box {
     background: #fff;
+    border-radius: 10px;
 
     padding: 41px;
 
@@ -42,6 +43,11 @@ export const CreateUserPage = () => {
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isAdm, setIsAdm] = useState(false);
+
+  const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setIsAdm(event.target.checked);
+  };
 
   const onSubmit = async () => {
     try {
@@ -60,10 +66,11 @@ export const CreateUserPage = () => {
   return (
     <Container>
       <div className="container-box">
+      <h1 style={{ textAlign: 'center' }}>Cadastro de Usuários</h1>
         <div id="flex">
           <InputComponent
             value={userName}
-            labelText="usuario"
+            labelText="Usuario"
             type="text"
             name="user"
             onChange={setUserName}
@@ -83,6 +90,12 @@ export const CreateUserPage = () => {
             type="password"
             name="password"
             onChange={setPassword}
+          />
+
+          <label htmlFor={"ADM"}>ADM</label>
+          <input type="checkbox"
+            checked={isAdm}
+            onChange={handleCheckboxChange}
           />
         </div>
 
