@@ -11,9 +11,13 @@ export interface CreateUser {
 }
 
 export interface ListUsers {
-    name: string;
-    email: string;
-    hash: string;
-    is_adm: boolean;
-    created_at: string;
+    name: string,
+    email: string,
+    hash: string,
+    is_adm: boolean,
+    created_at: string,
+}
+
+export interface DeleteUser {
+    email: string,
 }

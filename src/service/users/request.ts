@@ -1,5 +1,5 @@
 import { apiTic } from "../api";
-import { CreateUser, ListUsers, LoginRequest } from "./type";
+import { CreateUser, DeleteUser, ListUsers, LoginRequest } from "./type";
 
 const onLogin = async (data: LoginRequest): Promise<number> => {
     try {
@@ -42,4 +42,14 @@ const listUsers = async (): Promise<ListUsers[]> => {
   }
 }
 
-export { onLogin, changePassword, createUser, listUsers }
+const deleteUser = async (payload: DeleteUser): Promise<number> => {
+  try {
+    const response = await apiTic.delete('/users', {data: payload});
+    
+    return response.status;
+  } catch (err) {
+    throw new Error('Error')
+  }
+};
+
+export { onLogin, changePassword, createUser, listUsers, deleteUser }

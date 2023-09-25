@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { ListUsers } from "../../service/users/type";
+import { ListUsers, DeleteUser } from "../../service/users/type";
 import { useEffect, useState } from "react";
-import { listUsers } from "../../service/users/request";
+import { deleteUser, listUsers } from "../../service/users/request";
 import { InputComponent } from "../Input";
 
 const Container = styled.div`
@@ -92,16 +92,8 @@ const Container = styled.div`
   }
 `;
 
-const mockData = {
-  name: "John Doe",
-  email: "johndoe@example.com",
-  hash: "hashedpassword123",
-  is_adm: true,
-  created_at: "2023-09-25T12:00:00Z",
-};
-
 export const ListUsersPage = () => {
-  const [users, setUsers] = useState<ListUsers[]>([mockData, mockData]);
+  const [users, setUsers] = useState<ListUsers[]>([]);
   const [search, setSearch] = useState("");
 
   const list = async () => {
@@ -110,8 +102,22 @@ export const ListUsersPage = () => {
       setUsers(response);
     } catch (error) {
       alert("erro ao buscar os usaurios");
+      setUsers([])
     }
   };
+
+  const onDelete = async (email: string) => {
+    try {
+      let payload: DeleteUser = {
+        email: email
+      }
+      await deleteUser(payload);
+      await list()
+
+    } catch (error) {
+
+    }
+  }
 
   const onFilter = async () => {
     try {
@@ -160,7 +166,7 @@ export const ListUsersPage = () => {
                     users?.length === i + 1 ? "is-last" : ""
                   }`}
                 >
-                  <img src="/trash.png" alt="deletar" />
+                  <img src="/trash.png" alt="deletar" onClick={async () => await onDelete(user.email)} />
                   <img src="/edit.png" alt="editar" />
                 </td>
               </tr>

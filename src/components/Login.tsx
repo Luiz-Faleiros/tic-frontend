@@ -25,7 +25,7 @@ export default function Login(){
         try {
             let status = await onLogin(loginCredentials);
             if (status === HttpStatusCode.Ok) {
-              navigate('/dashboard/patrimonio');
+              navigate('/dashboard/listusers');
             }
         } catch (error) {
             alert('Usuário / senha incorretos');
