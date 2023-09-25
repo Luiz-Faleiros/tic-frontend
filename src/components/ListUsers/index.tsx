@@ -109,9 +109,18 @@ export const ListUsersPage = () => {
       const response = await listUsers();
       setUsers(response);
     } catch (error) {
-      // alert("erro ao buscar os usaurios");
+      alert("erro ao buscar os usaurios");
     }
   };
+
+  const onFilter = async () => {
+    try {
+      //passar o search por parametro
+      const res = await listUsers();
+    } catch (error) {
+      alert("erro ao filtrar os usaurios");
+    }
+  }
 
   useEffect(() => {
     list();
@@ -128,7 +137,7 @@ export const ListUsersPage = () => {
             name="search"
           />
 
-          <button>Filtrar</button>
+          <button onClick={onFilter}>Filtrar</button>
         </div>
         <table>
           <thead>
