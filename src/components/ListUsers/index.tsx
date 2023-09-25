@@ -67,7 +67,7 @@ const Container = styled.div`
       border-top: none;
 
       img {
-        width: 20px;
+        width: 25px;
       }
     }
 
@@ -120,7 +120,7 @@ export const ListUsersPage = () => {
     } catch (error) {
       alert("erro ao filtrar os usaurios");
     }
-  }
+  };
 
   useEffect(() => {
     list();
