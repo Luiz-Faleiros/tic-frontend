@@ -157,7 +157,7 @@ export const ListProductsPage = () => {
             <button onClick={onFilter}>Filtrar</button>
           </div>
           <button>
-            <Link to="/dashboard/createuser">Cadastrar</Link>
+            <Link to="/dashboard/createproduct">Cadastrar</Link>
           </button>
         </div>
 

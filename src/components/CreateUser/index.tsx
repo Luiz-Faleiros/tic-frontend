@@ -68,6 +68,7 @@ export const CreateUserPage = () => {
         email,
         name: userName,
         password,
+        is_adm: isAdm ? isAdm : false,
       };
 
       await createUser(data);
