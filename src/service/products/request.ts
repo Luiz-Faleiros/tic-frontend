@@ -22,4 +22,15 @@ const listProduct = async (): Promise<ListProduct[]> => {
     }
 };
 
-export { createProduct, listProduct }
+const deleteProduct = async (hash: string): Promise<number> => {
+  try {
+    const response = await apiTic.delete(`/products/${hash}`);
+    
+    return response.status;
+  } catch (err) {
+    throw new Error('Error');
+  }
+};
+
+
+export { createProduct, listProduct, deleteProduct }

@@ -108,7 +108,6 @@ export const ListUsersPage = () => {
       const response = await listUsers();
       setUsers(response);
     } catch (error) {
-      alert("erro ao buscar os usaurios");
       setUsers([])
     }
   };
@@ -128,12 +127,20 @@ export const ListUsersPage = () => {
 
   const onFilter = async () => {
     try {
-      //passar o search por parametro
-      const res = await listUsers();
+      if (search === '') {
+        list()
+      }
+
+      const filteredUsers: ListUsers[] = users.filter((user) =>
+        user.name.toLowerCase().includes(search.toLowerCase())
+      );
+  
+      setUsers(filteredUsers);
     } catch (error) {
-      alert("erro ao filtrar os usaurios");
+      alert("Erro ao filtrar os usuários");
     }
   };
+  
 
   useEffect(() => {
     list();
