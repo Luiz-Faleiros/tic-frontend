@@ -37,6 +37,19 @@ const Container = styled.div`
       padding: 0.5rem 1rem;
     }
   }
+
+  .flex {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .input-flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 `;
 
 export const CreateUserPage = () => {
@@ -45,8 +58,8 @@ export const CreateUserPage = () => {
   const [password, setPassword] = useState("");
   const [isAdm, setIsAdm] = useState(false);
 
-  const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setIsAdm(event.target.checked);
+  const handleCheckboxChange = () => {
+    setIsAdm((prev) => !prev);
   };
 
   const onSubmit = async () => {
@@ -59,14 +72,14 @@ export const CreateUserPage = () => {
 
       await createUser(data);
     } catch (error) {
-      alert("Erro ao criar um usuario")
+      alert("Erro ao criar um usuario");
     }
   };
 
   return (
     <Container>
       <div className="container-box">
-      <h1 style={{ textAlign: 'center' }}>Cadastro de Usuários</h1>
+        <h1 style={{ textAlign: "center" }}>Cadastro de Usuários</h1>
         <div id="flex">
           <InputComponent
             value={userName}
@@ -84,19 +97,23 @@ export const CreateUserPage = () => {
             onChange={setEmail}
           />
 
-          <InputComponent
-            value={password}
-            labelText="Senha"
-            type="password"
-            name="password"
-            onChange={setPassword}
-          />
-
-          <label htmlFor={"ADM"}>ADM</label>
-          <input type="checkbox"
-            checked={isAdm}
-            onChange={handleCheckboxChange}
-          />
+          <div className="input-flex">
+            <InputComponent
+              value={password}
+              labelText="Senha"
+              type="password"
+              name="password"
+              onChange={setPassword}
+            />
+            <div className="flex">
+              <label htmlFor={"ADM"}>É ADM?</label>
+              <input
+                type="radio"
+                checked={isAdm}
+                onClick={handleCheckboxChange}
+              />
+            </div>
+          </div>
         </div>
 
         <div className="submit-button">
