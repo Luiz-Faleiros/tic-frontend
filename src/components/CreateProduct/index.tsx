@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { InputComponent } from "../Input";
 import styled from "styled-components";
-import { CreateProduct } from "../../service/products/type";
-import { createProduct } from "../../service/products/request";
+import { CreateProduct, ListProduct } from "../../service/products/type";
+import { createProduct, listProduct, updateProduct } from "../../service/products/request";
 import SelectComponent from "../select-input/select-input";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Container = styled.div`
   display: flex;
@@ -47,50 +48,77 @@ export const CreateProductPage = () => {
   const [sku, setSku] = useState("");
   const [status, setStatus] = useState("");
   const [setor, setSetor] = useState("");
+  const [hash, setHash] = useState("");
+
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    console.log("location", location.state?.product?.name);
+    
+    setName(location.state?.product?.name ? location.state?.product?.name : "")
+    setSku(location.state?.product?.sku ? location.state?.product?.sku : "")
+    setHash(location.state?.product?.hash ? location.state?.product?.hash : "")
+  }, [location.state?.product?.hash, location.state?.product?.name, location.state?.product?.sku]);
 
   const onSubmit = async () => {
+    const data: CreateProduct = {
+      categoryId: parseInt(category),
+      originId: parseInt(origin),
+      roomId: parseInt(setor),
+      name: name,
+      sku: sku,
+      brokenAt: status === "1" ? true : false,
+  };
     try {
-      const data: CreateProduct = {
-          categoryId: 0,
-          originId: 0,
-          roomId: 0,
-          name: "",
-          sku: "",
-          brokenAt: false,
-      };
-
-      await createProduct(data);
+      if (hash !== "") {
+        await updateProduct(hash, data)
+      } else {
+        await createProduct(data);
+      }
     } catch (error) {
       alert("Erro ao criar um usuario")
     }
+    navigate('/dashboard/listproduct');
   };
 
+  const handleOriginChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setOrigin(e.target.value);
+  };
 
   const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setCategory(e.target.value);
   };
 
+  const handleStatusChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setStatus(e.target.value);
+  };
+
+  const handleSetorChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSetor(e.target.value);
+  };
+
   const categoryOptions = [
-    { value: '', label: '' },
+    { value: '', label: 'Selecionar' },
     { value: '1', label: 'Eletronicos' },
     { value: '2', label: 'Limpeza' },
     { value: '3', label: 'Utensilios de cozinha' },
   ];
 
   const originOptions = [
-    { value: '', label: '' },
+    { value: '', label: 'Selecionar' },
     { value: '1', label: 'Ongs' },
     { value: '2', label: 'Doações' },
   ];
 
   const setorOptions = [
-    { value: '', label: '' },
+    { value: '', label: 'Selecionar' },
     { value: '1', label: 'Sala 1' },
     { value: '2', label: 'Sala 2' },
   ];
 
   const statusOptions = [
-    { value: '', label: '' },
+    { value: '', label: 'Selecionar' },
     { value: '1', label: 'Quebrado' },
     { value: '2', label: 'Inteiro' },
   ];
@@ -115,7 +143,7 @@ export const CreateProductPage = () => {
               labelText="Origem"
               name="origem"
               options={originOptions}
-              onChange={handleCategoryChange}
+              onChange={handleOriginChange}
             />
           </div>
 
@@ -142,7 +170,7 @@ export const CreateProductPage = () => {
               labelText="Status"
               name="status"
               options={statusOptions}
-              onChange={handleCategoryChange}
+              onChange={handleStatusChange}
             />
 
             <SelectComponent
@@ -150,14 +178,14 @@ export const CreateProductPage = () => {
               labelText="Setor"
               name="setor"
               options={setorOptions}
-              onChange={handleCategoryChange}
+              onChange={handleSetorChange}
             />
           </div>
 
         </div>
 
         <div className="submit-button">
-          <button onClick={onSubmit}>Criar Produto</button>
+          <button onClick={onSubmit}>{hash !== "" ? "Atualizar" : "Criar Produto"}</button>
         </div>
       </div>
     </Container>

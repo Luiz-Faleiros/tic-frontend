@@ -1,9 +1,11 @@
 import styled from "styled-components";
 import { useEffect, useState } from "react";
 import { InputComponent } from "../Input";
-import { Link } from "react-router-dom";
+import { Link, Route, useNavigate } from "react-router-dom";
 import { deleteProduct, listProduct } from "../../service/products/request";
 import { ListProduct } from "../../service/products/type";
+import { CreateProductPage } from "../CreateProduct";
+import { Dashboard } from "../Dashboard";
 
 const Container = styled.div`
   display: flex;
@@ -102,6 +104,7 @@ const Container = styled.div`
 export const ListProductsPage = () => {
   const [products, setProducts] = useState<ListProduct[]>([]);
   const [search, setSearch] = useState("");
+  const navigate = useNavigate();
 
   const list = async () => {
     try {
@@ -120,6 +123,10 @@ export const ListProductsPage = () => {
     } catch (error) {
 
     }
+  }
+
+  const handleUpateProcut = (product: ListProduct) => {
+    navigate('/dashboard/createproduct', { state: { product } });
   }
 
   const onFilter = async () => {
@@ -185,7 +192,7 @@ export const ListProductsPage = () => {
                   }`}
                 >
                   <img src="/trash.png" alt="deletar" onClick={async () => await onDelete(product.hash)} />
-                  <img src="/edit.png" alt="editar" />
+                  <img src="/edit.png" alt="editar" onClick={() => {handleUpateProcut(product)}} />
                 </td>
               </tr>
             ))}

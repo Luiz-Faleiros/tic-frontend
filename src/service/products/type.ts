@@ -16,5 +16,5 @@ export interface ListProduct {
     name: string,
     sku: string,
     hash: string,
-    brokenAt: Date,
+    brokenAt: string,
 }

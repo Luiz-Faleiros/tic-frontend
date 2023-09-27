@@ -187,7 +187,6 @@ export const ListUsersPage = () => {
                   }`}
                 >
                   <img src="/trash.png" alt="deletar" onClick={async () => await onDelete(user.email)} />
-                  <img src="/edit.png" alt="editar" />
                 </td>
               </tr>
             ))}
