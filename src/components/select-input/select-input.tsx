@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 interface SelectComponentProps {
   value: string;
@@ -13,7 +13,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 4px;
-  width:50%;
+  width: 50%;
 
   label {
     color: #000;
@@ -26,6 +26,7 @@ const Container = styled.div`
   select {
     border-radius: 5px;
     padding: 15px;
+    appearance: menulist-button;
     border: 2px solid #000;
     background: #fff;
     height: 40px;
