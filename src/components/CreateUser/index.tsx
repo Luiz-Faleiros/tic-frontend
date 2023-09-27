@@ -3,6 +3,7 @@ import { InputComponent } from "../Input";
 import styled from "styled-components";
 import { createUser } from "../../service/users/request";
 import { CreateUser } from "../../service/users/type";
+import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`
   display: flex;
