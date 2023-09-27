@@ -15,7 +15,8 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 4px;
-
+  width:50%;
+  
   label {
     color: #000;
     font-size: 1rem;

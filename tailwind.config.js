@@ -2,11 +2,14 @@
 export default {
   content: [
     './src/**/*.tsx',
-    './index.html'
+    './index.html',
+    "./node_modules/flowbite/**/*.js"
   ],
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    require('flowbite/plugin')
+  ],
 }
 

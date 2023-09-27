@@ -82,23 +82,24 @@ export const CreateUserPage = () => {
       <div className="container-box">
         <h1 style={{ textAlign: "center" }}>Cadastro de Usuários</h1>
         <div id="flex">
-          <InputComponent
-            value={userName}
-            labelText="Usuario"
-            type="text"
-            name="user"
-            onChange={setUserName}
-          />
+          <div className="flex gap-8">
+            <InputComponent
+              value={userName}
+              labelText="Usuario"
+              type="text"
+              name="user"
+              onChange={setUserName}
+            />
+            <InputComponent
+              value={email}
+              labelText="Email"
+              type="email"
+              name="email"
+              onChange={setEmail}
+            />
+          </div>
 
-          <InputComponent
-            value={email}
-            labelText="Email"
-            type="email"
-            name="email"
-            onChange={setEmail}
-          />
-
-          <div className="input-flex">
+          <div className="flex gap-8">
             <InputComponent
               value={password}
               labelText="Senha"
@@ -107,14 +108,15 @@ export const CreateUserPage = () => {
               onChange={setPassword}
             />
             <div className="flex">
-              <label htmlFor={"ADM"}>É ADM?</label>
               <input
                 type="radio"
                 checked={isAdm}
                 onClick={handleCheckboxChange}
               />
+              <label htmlFor={"ADM"}>É ADM?</label>
             </div>
           </div>
+
         </div>
 
         <div className="submit-button">

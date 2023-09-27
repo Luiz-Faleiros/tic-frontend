@@ -3,6 +3,7 @@ import { InputComponent } from "../Input";
 import styled from "styled-components";
 import { CreateProduct } from "../../service/products/type";
 import { createProduct } from "../../service/products/request";
+import SelectComponent from "../select-input/select-input";
 
 const Container = styled.div`
   display: flex;
@@ -64,59 +65,75 @@ export const CreateProductPage = () => {
     }
   };
 
+
+  const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setCategory(e.target.value);
+  };
+
+  const categoryOptions = [
+    { value: '1', label: 'Eletronicos' },
+    { value: '2', label: 'Limpeza' },
+    { value: '3', label: 'Utensilios de cozinha' },
+  ];
+
   return (
     <Container>
       <div className="container-box">
-      <h1 style={{ textAlign: 'center' }}>Cadastro de Produtos</h1>
+      <h1 className="font-bold text-2xl pb-2" style={{ textAlign: 'center' }}>Cadastro de Produtos</h1>
 
         <div id="flex">
-          <InputComponent
-            value={name}
-            labelText="Nome"
-            type="text"
-            name="name"
-            onChange={setName}
-          />
+          <div className="flex gap-4">
+            <InputComponent
+              value={name}
+              labelText="Nome"
+              type="text"
+              name="name"
+              onChange={setName}
+            />
 
-          <InputComponent
-            value={origin}
-            labelText="Origem"
-            type="text"
-            name="origin"
-            onChange={setOrigin}
-          />
+            <InputComponent
+              value={origin}
+              labelText="Origem"
+              type="text"
+              name="origin"
+              onChange={setOrigin}
+            />
+          </div>
 
-          <InputComponent
-            value={category}
-            labelText="Categoria"
-            type="text"
-            name="category"
-            onChange={setCategory}
-          />
+          <div className="flex gap-4">
+            <SelectComponent
+              value={category}
+              labelText="Categoria"
+              name="category"
+              options={categoryOptions}
+              onChange={handleCategoryChange}
+            />
+            <InputComponent
+              value={sku}
+              labelText="SKU"
+              type="text"
+              name="sku"
+              onChange={setSku}
+            />
+          </div>
 
-          <InputComponent
-            value={sku}
-            labelText="SKU"
-            type="text"
-            name="sku"
-            onChange={setSku}
-          />
+          <div className="flex gap-4">
+            <InputComponent
+              value={status}
+              labelText="Status"
+              type="text"
+              name="status"
+              onChange={setStatus}
+            />
 
-          <InputComponent
-            value={status}
-            labelText="Status"
-            type="text"
-            name="status"
-            onChange={setStatus}
-          />
-
-          <InputComponent
-            value={setor}
-            labelText="Setor"
-            type="text"
-            name="setor"
-            onChange={setSetor}
-          />
+            <InputComponent
+              value={setor}
+              labelText="Setor"
+              type="text"
+              name="setor"
+              onChange={setSetor}
+            />
+          </div>
 
         </div>
 
