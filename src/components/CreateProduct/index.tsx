@@ -54,8 +54,6 @@ export const CreateProductPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log("location", location.state?.product?.name);
-    
     setName(location.state?.product?.name ? location.state?.product?.name : "")
     setSku(location.state?.product?.sku ? location.state?.product?.sku : "")
     setHash(location.state?.product?.hash ? location.state?.product?.hash : "")
@@ -126,7 +124,7 @@ export const CreateProductPage = () => {
   return (
     <Container>
       <div className="container-box">
-      <h1 className="font-bold text-2xl pb-2" style={{ textAlign: 'center' }}>Cadastro de Produtos</h1>
+      <h1 className="font-bold text-2xl pb-2" style={{ textAlign: 'center' }}>{hash !== "" ? "Atualizar Produtos" : "Cadastro de Produtos"}</h1>
 
         <div id="flex">
           <div className="flex gap-4">

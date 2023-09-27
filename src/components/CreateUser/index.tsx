@@ -58,6 +58,8 @@ export const CreateUserPage = () => {
   const [password, setPassword] = useState("");
   const [isAdm, setIsAdm] = useState(false);
 
+  const navigate = useNavigate();
+
   const handleCheckboxChange = () => {
     setIsAdm((prev) => !prev);
   };
@@ -65,13 +67,14 @@ export const CreateUserPage = () => {
   const onSubmit = async () => {
     try {
       const data: CreateUser = {
-        email,
+        email: email,
         name: userName,
-        password,
+        password: password,
         is_adm: isAdm ? isAdm : false,
       };
 
       await createUser(data);
+      navigate("/dashboard/createuser")
     } catch (error) {
       alert("Erro ao criar um usuario");
     }
