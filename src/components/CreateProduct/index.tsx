@@ -71,9 +71,28 @@ export const CreateProductPage = () => {
   };
 
   const categoryOptions = [
+    { value: '', label: '' },
     { value: '1', label: 'Eletronicos' },
     { value: '2', label: 'Limpeza' },
     { value: '3', label: 'Utensilios de cozinha' },
+  ];
+
+  const originOptions = [
+    { value: '', label: '' },
+    { value: '1', label: 'Ongs' },
+    { value: '2', label: 'Doações' },
+  ];
+
+  const setorOptions = [
+    { value: '', label: '' },
+    { value: '1', label: 'Sala 1' },
+    { value: '2', label: 'Sala 2' },
+  ];
+
+  const statusOptions = [
+    { value: '', label: '' },
+    { value: '1', label: 'Quebrado' },
+    { value: '2', label: 'Inteiro' },
   ];
 
   return (
@@ -91,23 +110,16 @@ export const CreateProductPage = () => {
               onChange={setName}
             />
 
-            <InputComponent
+            <SelectComponent
               value={origin}
               labelText="Origem"
-              type="text"
-              name="origin"
-              onChange={setOrigin}
+              name="origem"
+              options={originOptions}
+              onChange={handleCategoryChange}
             />
           </div>
 
           <div className="flex gap-4">
-            <SelectComponent
-              value={category}
-              labelText="Categoria"
-              name="category"
-              options={categoryOptions}
-              onChange={handleCategoryChange}
-            />
             <InputComponent
               value={sku}
               labelText="SKU"
@@ -115,23 +127,30 @@ export const CreateProductPage = () => {
               name="sku"
               onChange={setSku}
             />
+            <SelectComponent
+              value={category}
+              labelText="Categoria"
+              name="category"
+              options={categoryOptions}
+              onChange={handleCategoryChange}
+            />
           </div>
 
           <div className="flex gap-4">
-            <InputComponent
+            <SelectComponent
               value={status}
               labelText="Status"
-              type="text"
               name="status"
-              onChange={setStatus}
+              options={statusOptions}
+              onChange={handleCategoryChange}
             />
 
-            <InputComponent
+            <SelectComponent
               value={setor}
               labelText="Setor"
-              type="text"
               name="setor"
-              onChange={setSetor}
+              options={setorOptions}
+              onChange={handleCategoryChange}
             />
           </div>
 

@@ -80,7 +80,7 @@ export const CreateUserPage = () => {
   return (
     <Container>
       <div className="container-box">
-        <h1 style={{ textAlign: "center" }}>Cadastro de Usuários</h1>
+      <h1 className="font-bold text-2xl pb-2" style={{ textAlign: 'center' }}>Cadastro de Usuários</h1>
         <div id="flex">
           <div className="flex gap-8">
             <InputComponent

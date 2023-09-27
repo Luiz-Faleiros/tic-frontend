@@ -25,7 +25,7 @@ const Container = styled.div`
 
   select {
     border-radius: 5px;
-    padding: 15px;
+    padding: 0 15px;
     appearance: menulist-button;
     border: 2px solid #000;
     background: #fff;
