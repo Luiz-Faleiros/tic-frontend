@@ -33,7 +33,9 @@ export default function Login(){
     }
     
     return (
-       <div className="bg-blue-900 flex items-center justify-center h-screen w-screen">
+       <div style={{paddingBottom: "4rem"}} className="bg-blue-900 flex flex-col items-center justify-center h-screen w-screen">
+
+            <img style={{    width: "350px"}} src={require("./login.png")} alt=""/>
             <div className="bg-white p-8 rounded-lg drop-shadow-2x1 w-96 flex flex-col items-center">
                 <h2 className="font-bold mb-4"> Login </h2>
                 <form onSubmit={handleLogin}>
