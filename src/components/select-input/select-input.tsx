@@ -5,7 +5,7 @@ interface SelectComponentProps {
   value: string;
   labelText: string;
   name: string;
-  options: { value: string; label: string }[];
+  options: { value: string; label: string; styleclass: string;}[];
   onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 
@@ -44,9 +44,9 @@ const SelectComponent: React.FC<SelectComponentProps> = ({
   return (
     <Container>
       <label>{labelText}</label>
-      <select name={name} value={value} onChange={onChange}>
+      <select className="outline-none" name={name} value={value} onChange={onChange}>
         {options.map((option, index) => (
-          <option key={index} value={option.value}>
+          <option key={index} value={option.value} className={option.styleclass}>
             {option.label}
           </option>
         ))}

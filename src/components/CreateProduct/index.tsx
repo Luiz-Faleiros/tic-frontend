@@ -29,6 +29,10 @@ const Container = styled.div`
     }
   }
 
+  .green {
+    background: #46FF33;
+  }
+
   .submit-button {
     text-align: right;
     margin-top: 1rem;
@@ -97,34 +101,51 @@ export const CreateProductPage = () => {
   };
 
   const categoryOptions = [
-    { value: '', label: 'Selecionar' },
-    { value: '1', label: 'Eletronicos' },
-    { value: '2', label: 'Limpeza' },
-    { value: '3', label: 'Utensilios de cozinha' },
+    { value: '', label: 'Selecionar', styleclass:'' },
+    { value: '1', label: 'Eletronicos', styleclass:'' },
+    { value: '2', label: 'Limpeza', styleclass:'' },
+    { value: '3', label: 'Utensilios de cozinha', styleclass:'' },
   ];
 
   const originOptions = [
-    { value: '', label: 'Selecionar' },
-    { value: '1', label: 'Ongs' },
-    { value: '2', label: 'Doações' },
+    { value: '', label: 'Selecionar', styleclass:'' },
+    { value: '1', label: 'Ongs', styleclass:'' },
+    { value: '2', label: 'Doações', styleclass:'' },
   ];
 
   const setorOptions = [
-    { value: '', label: 'Selecionar' },
-    { value: '1', label: 'Sala 1' },
-    { value: '2', label: 'Sala 2' },
+    { value: '', label: 'Selecionar', styleclass:'' },
+    { value: '1', label: 'Patio', styleclass:'bg-rose-200 outline-none' },
+    { value: '2', label: 'Banheiro 1', styleclass:'bg-zinc-500' },
+    { value: '3', label: 'Banheiro 2', styleclass:'green' },
+    { value: '4', label: 'Sala 2', styleclass:'bg-purple-300' },
+    { value: '5', label: 'Sala 3', styleclass:'bg-blue-200' },
+    { value: '6', label: 'Banheiro 3', styleclass:'bg-pink-500' },
+    { value: '7', label: 'Sala 4', styleclass:'bg-sky-200' },
+    { value: '8', label: 'Sala 5', styleclass:'bg-rose-500' },
+    { value: '9', label: 'Sala 6', styleclass:'bg-amber-900' },
+    { value: '10', label: 'Sala 7', styleclass:'bg-rose-300' },
+    { value: '11', label: 'Sala 8', styleclass:'bg-purple-700' },
+    { value: '12', label: 'Sala 9', styleclass:'bg-blue-800' },
+    { value: '13', label: 'Sala 10', styleclass:'bg-orange-400' },
+    { value: '14', label: 'Banheiro 4', styleclass:'bg-fuchsia-600' },
+    { value: '15', label: 'Escritório 1', styleclass:'bg-sky-400' },
+    { value: '16', label: 'Escritório 2', styleclass:'bg-red-600' },
+    { value: '17', label: 'Cozinha', styleclass:'bg-yellow-100' },
+    { value: '18', label: 'Dispensa 1', styleclass:'bg-rose-950' },
+    { value: '19', label: 'Dispensa 2', styleclass:'bg-yellow-300' },
   ];
 
   const statusOptions = [
-    { value: '', label: 'Selecionar' },
-    { value: '1', label: 'Quebrado' },
-    { value: '2', label: 'Inteiro' },
+    { value: '', label: 'Selecionar', styleclass:'' },
+    { value: '1', label: 'Quebrado', styleclass:'' },
+    { value: '2', label: 'Inteiro', styleclass:'' },
   ];
 
   return (
     <Container>
-      <div className="container-box">
-      <h1 className="font-bold text-2xl pb-2" style={{ textAlign: 'center' }}>{hash !== "" ? "Atualizar Produtos" : "Cadastro de Produtos"}</h1>
+      <div className="container-box pt-4">
+      <h1 className="font-bold text-2xl pb-2 pt-4" style={{ textAlign: 'center' }}>{hash !== "" ? "Atualizar Produtos" : "Cadastro de Produtos"}</h1>
 
         <div id="flex">
           <div className="flex gap-4">
@@ -180,6 +201,10 @@ export const CreateProductPage = () => {
             />
           </div>
 
+        </div>
+
+        <div className="flex gap-4 justify-center">
+        <img src="/planta.jpeg" alt="Imagem de uma planta" style={{ height: '400px' }}/>
         </div>
 
         <div className="submit-button">
